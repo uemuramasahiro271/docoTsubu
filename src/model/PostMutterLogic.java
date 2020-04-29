@@ -1,10 +1,22 @@
 package model;
 
-import java.util.List;
+import java.sql.SQLException;
 
 public class PostMutterLogic {
-	public void execute(Mutter mutter, List<Mutter> mutterList) {
-		mutterList.add(0, mutter);
+
+	private String dbPath;
+
+	public PostMutterLogic(String dbPath) {
+		this.dbPath = dbPath;
+	}
+
+	public void execute(Mutter mutter) {
+		MutterDAO dao = new MutterDAO(dbPath);
+		try {
+			dao.create(mutter);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

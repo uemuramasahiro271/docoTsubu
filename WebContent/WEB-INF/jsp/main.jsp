@@ -6,7 +6,9 @@
 
 <%
 	@SuppressWarnings("unchecked")
-	List<Mutter> mutterList = (List<Mutter>)application.getAttribute("mutterList");
+	List<Mutter> mutterList = (List<Mutter>)request.getAttribute("mutterList");
+
+	String errorMsg = (String)request.getAttribute("errorMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -25,6 +27,10 @@
 		<input type="text" name="text">
 		<input type="submit" value="つぶやく">
 	</form>
+	<% if(errorMsg != null){ %>
+		<p><%= errorMsg %></p>
+	<% } %>
+
 	<% for(Mutter mutter : mutterList) { %>
 		<p>
 			<%= mutter.getUserName() %> : <%= mutter.getText() %>

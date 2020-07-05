@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+// ユーザークラス
 public class User implements Serializable{
 
 	private String name;
